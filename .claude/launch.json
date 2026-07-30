@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "eporifrutas",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev:3008"],
+      "port": 3008,
+      "autoPort": false
+    }
+  ]
+}

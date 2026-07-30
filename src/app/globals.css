@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+:root {
+  --canvas: #F3F5F3;
+  --surface: #FFFFFF;
+  --surface-alt: #F8FAF8;
+  --ink: #15231B;
+  --sub: #57655C;
+  --muted: #8A968E;
+  --line: #E6EAE7;
+  --line-strong: #D7DDD8;
+  --forest: #0E3B24;
+  --brand: #1B8A4B;
+  --brand-bright: #2FA85B;
+  --citrus: #E0870B;
+  --tomato: #D4462A;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-sub: var(--sub);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-forest: var(--forest);
+  --color-brand: var(--brand);
+  --color-citrus: var(--citrus);
+  --color-tomato: var(--tomato);
+}
+
+* { border-color: var(--line); }
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv11", "ss01";
+  text-rendering: optimizeLegibility;
+}
+
+/* Números tabulares para todas as figuras financeiras/quantidades */
+.tnum { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+
+/* Cartão base */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(15,44,28,0.04), 0 1px 2px rgba(15,44,28,0.05);
+}
+.card-hover { transition: box-shadow .18s ease, transform .18s ease, border-color .18s ease; }
+.card-hover:hover { box-shadow: 0 2px 4px rgba(15,44,28,0.05), 0 8px 22px rgba(15,44,28,0.08); border-color: var(--line-strong); }
+
+/* Tabela de dados profissional */
+.dtable { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; }
+.dtable thead th {
+  position: sticky; top: 0; z-index: 1;
+  background: var(--surface-alt);
+  color: var(--muted);
+  font-weight: 600; font-size: 11px; letter-spacing: .04em; text-transform: uppercase;
+  text-align: left; padding: 9px 14px; white-space: nowrap;
+  border-bottom: 1px solid var(--line);
+}
+.dtable tbody td { padding: 11px 14px; border-bottom: 1px solid var(--line); color: var(--ink); vertical-align: middle; }
+.dtable tbody tr:last-child td { border-bottom: none; }
+.dtable tbody tr { transition: background .12s ease; }
+.dtable tbody tr.clickable { cursor: pointer; }
+.dtable tbody tr.clickable:hover { background: var(--surface-alt); }
+.dtable tbody tr.selected { background: var(--brand-bright); background: #EAF4EC; }
+
+/* Focus ring consistente */
+.ring-focus:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(27,138,75,0.18); border-color: var(--brand); }
+
+/* Scrollbar discreta */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #C4CDC7; border-radius: 999px; border: 2px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-thumb:hover { background: #A6B2AA; background-clip: content-box; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Animação subtil de entrada (só opacidade — transform criaria containing-block e partiria modais fixed) */
+@keyframes fadeUp { from { opacity: 0; } to { opacity: 1; } }
+.fade-up { animation: fadeUp .2s ease both; }
