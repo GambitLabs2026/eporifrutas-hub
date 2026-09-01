@@ -3,7 +3,7 @@
 
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
-import { Inbox, PackageCheck, Wallet, TrendingUp, MailWarning, Mail, ArrowRight, CheckCircle2 } from 'lucide-react'
+import { Inbox, PackageCheck, Wallet, TrendingUp, MailWarning, Mail, ArrowRight, CheckCircle2, Boxes } from 'lucide-react'
 import { PageHeader } from '@/components/layout/page-header'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -16,7 +16,7 @@ import { T, eur, eur0, kg } from '@/lib/ui/theme'
 import {
   ENCOMENDAS, CONFERENCIAS, VENDAS_MENSAIS,
   kpisEncomendas, kpisConferencias,
-  ESTADO_ENCOMENDA_LABEL, ACAO_COBRANCA_LABEL, CANAL_LABEL,
+  ESTADO_ENCOMENDA_LABEL, ACAO_COBRANCA_LABEL, CANAL_LABEL, kpisStock,
 } from '@/lib/mock'
 import { prazosPorDefeito, resumoCobranca, type AlertaVivo } from '@/lib/cobranca/engine'
 import { faturasLiquidadas } from '@/lib/cobranca/phc-sync'
@@ -25,6 +25,7 @@ import { carregarPrazos, carregarEmailsEnviados, marcarEmailEnviado, carregarDoc
 export default function DashboardPage() {
   const enc = kpisEncomendas()
   const cnf = kpisConferencias()
+  const stk = kpisStock()
   const { user } = useAuth()
   const canEnviar = user ? podeFazer(user.role, 'cobranca.enviar') : false
   const [metrica, setMetrica] = useState<'valor' | 'kg'>('valor')
@@ -59,6 +60,19 @@ export default function DashboardPage() {
             <p className="text-[12px]" style={{ color: '#9A4B36' }}>{eur0(totalVencido)} em atraso · {porEnviar} cobrança{porEnviar !== 1 ? 's' : ''} por enviar</p>
           </div>
           <span className="text-[12px] font-semibold inline-flex items-center gap-1 shrink-0" style={{ color: T.tomato }}>Tratar cobranças <ArrowRight size={14} /></span>
+        </Link>
+      )}
+
+      {/* Alerta automático de stock (ecrã principal) */}
+      {(stk.ruturas > 0 || stk.abaixoMinimo > 0) && (
+        <Link href="/stock" className="flex items-center gap-3 rounded-xl px-4 py-3 mb-4 card-hover"
+          style={{ backgroundColor: T.citrusSoft, border: '1px solid #F3DCB4' }}>
+          <span className="w-9 h-9 rounded-[10px] flex items-center justify-center shrink-0" style={{ backgroundColor: '#fff' }}><Boxes size={18} style={{ color: T.citrus }} /></span>
+          <div className="min-w-0 flex-1">
+            <p className="text-[13.5px] font-bold" style={{ color: '#9A5C06' }}>Stock: {stk.abaixoMinimo} artigos abaixo do mínimo{stk.ruturas > 0 ? ` · ${stk.ruturas} em rutura` : ''}</p>
+            <p className="text-[12px]" style={{ color: '#9A6206' }}>Sugestão de compra: {kg(stk.sugestaoTotalKg)} · apurado ao peso, já com encomendas reservadas</p>
+          </div>
+          <span className="text-[12px] font-semibold inline-flex items-center gap-1 shrink-0" style={{ color: T.citrus }}>Ver stock <ArrowRight size={14} /></span>
         </Link>
       )}
 

@@ -4,7 +4,7 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import {
-  LayoutDashboard, Inbox, PackageCheck, Wallet, TrendingUp, Users, Apple, MessagesSquare,
+  LayoutDashboard, Inbox, PackageCheck, Wallet, TrendingUp, Users, Apple, MessagesSquare, Boxes, Recycle,
   ChevronLeft, ChevronRight, Menu, X, LogOut, Sprout,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -19,6 +19,8 @@ const navItems: NavItem[] = [
   { href: '/dashboard', label: 'Dashboard', moduleKey: 'dashboard', icon: LayoutDashboard, group: '' },
   { href: '/encomendas', label: 'Receção de Encomendas', moduleKey: 'encomendas', icon: Inbox, group: 'Operação' },
   { href: '/conferencia', label: 'Receção vs. Faturação', moduleKey: 'conferencia', icon: PackageCheck, group: 'Operação' },
+  { href: '/stock', label: 'Stock do Armazém', moduleKey: 'stock', icon: Boxes, group: 'Armazém' },
+  { href: '/vasilhame', label: 'Gestão de Vasilhame', moduleKey: 'vasilhame', icon: Recycle, group: 'Armazém' },
   { href: '/conta-corrente', label: 'Conta-corrente & Cobranças', moduleKey: 'conta-corrente', icon: Wallet, group: 'Financeiro' },
   { href: '/analise', label: 'Análise de Tendências', moduleKey: 'analise', icon: TrendingUp, group: 'Análise' },
   { href: '/clientes', label: 'Clientes', moduleKey: 'clientes', icon: Users, group: 'Cadastro' },

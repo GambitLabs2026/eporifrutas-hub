@@ -8,6 +8,8 @@ export * from './encomendas'
 export * from './conferencias'
 export * from './analytics'
 export * from './procedimentos'
+export * from './vasilhame'
+export * from './stock'
 
 import { ENCOMENDAS } from './encomendas'
 import { CONFERENCIAS } from './conferencias'

@@ -60,10 +60,10 @@ export const ROLE_LABELS: Record<UserRole, string> = {
 
 // O que cada papel vê. Em demo a Gestão vê tudo; os restantes focam a sua função.
 export const ROLE_MODULES: Record<UserRole, string[]> = {
-  gestor:     ['dashboard', 'encomendas', 'conferencia', 'conta-corrente', 'analise', 'clientes', 'artigos', 'procedimentos'],
-  comercial:  ['dashboard', 'encomendas', 'clientes', 'artigos', 'analise', 'procedimentos'],
-  operacoes:  ['dashboard', 'conferencia', 'artigos', 'procedimentos'],
-  financeiro: ['dashboard', 'conta-corrente', 'clientes', 'analise', 'procedimentos'],
+  gestor:     ['dashboard', 'encomendas', 'conferencia', 'stock', 'vasilhame', 'conta-corrente', 'analise', 'clientes', 'artigos', 'procedimentos'],
+  comercial:  ['dashboard', 'encomendas', 'stock', 'clientes', 'artigos', 'analise', 'procedimentos'],
+  operacoes:  ['dashboard', 'conferencia', 'stock', 'vasilhame', 'artigos', 'procedimentos'],
+  financeiro: ['dashboard', 'conta-corrente', 'vasilhame', 'clientes', 'analise', 'procedimentos'],
 }
 
 // Rota inicial após login por papel
