@@ -66,7 +66,7 @@ export function Sidebar() {
           {!compact && (
             <div className="leading-none">
               <p className="text-[15px] font-black tracking-[0.14em]" style={{ color: TEXT }}>EPORIFRUTAS</p>
-              <p className="text-[8.5px] tracking-[0.2em] font-bold mt-1" style={{ color: BRAND }}>OPS HUB · PRÉ-PHC</p>
+              <p className="text-[8.5px] tracking-[0.2em] font-bold mt-1" style={{ color: BRAND }}>CAMADA PRÉ-PHC</p>
             </div>
           )}
         </div>

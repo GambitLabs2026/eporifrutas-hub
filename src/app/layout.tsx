@@ -7,7 +7,7 @@ import { AuthProvider } from '@/contexts/auth-context'
 const geist = Geist({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Eporifrutas Ops Hub — Receção, Conferência & Cobranças',
+  title: 'Eporifrutas — Receção, Conferência & Cobranças',
   description: 'Camada pré-PHC: receção inteligente de encomendas, conferência receção vs. faturação, conta-corrente e análise — Eporifrutas',
 }
 

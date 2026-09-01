@@ -40,7 +40,7 @@ export default function LoginPage() {
           </span>
           <div className="leading-none">
             <p className="text-2xl font-black tracking-[0.14em] text-white">EPORIFRUTAS</p>
-            <p className="text-[10px] tracking-[0.24em] font-bold mt-1.5" style={{ color: BRAND }}>OPS HUB · CAMADA PRÉ-PHC</p>
+            <p className="text-[10px] tracking-[0.24em] font-bold mt-1.5" style={{ color: BRAND }}>CAMADA PRÉ-PHC</p>
           </div>
         </div>
 
